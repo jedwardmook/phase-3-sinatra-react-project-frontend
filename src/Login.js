@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login(){
     const [firstName, setFirstName] = useState()
@@ -35,7 +36,7 @@ function Login(){
                 onChange={emailCheck}    
             /><br/>
             <button>Login</button><br></br>
-            <h6>Click here to register</h6>
+            <h5>Click to <Link to={"/register"}>register</Link></h5>
         </div>
     )
 }
