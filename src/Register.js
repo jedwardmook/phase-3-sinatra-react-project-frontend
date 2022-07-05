@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 function Register(){
     const [registerEmployee, setRegisterEmployee] = useState({
@@ -17,8 +18,22 @@ function Register(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(registerEmployee)
-    }
+        fetch("http://localhost:9292/employees", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                first_name: registerEmployee.first_name,
+                last_name: registerEmployee.last_name,
+                email_address: registerEmployee.email_address
+            }),
+        })
+        .then((r) => r.json())
+        .then(response => console.log(response))
+    };
+
+
 
     return (
         <div>
@@ -42,13 +57,14 @@ function Register(){
             <input 
                 id="register-email"
                 type="text" 
-                name="email_address"
+                name="email_address" 
                 value={registerEmployee.email_address}
                 placeholder="Email Address"
                 onChange={handleChange}
             /><br />
             <button>Register</button>
             </form>
+            <h5>Back to <Link to={'/'}>login</Link></h5>
         </div>
     )
 }
