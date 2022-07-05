@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Logs({dailyLog, employees}){
+function Logs({dailyLog}){
 
     const {created_on} = dailyLog
     const logDate = new Date(created_on).toDateString()
 
     const full_name = dailyLog.employee.first_name + ' ' + dailyLog.employee.last_name
-
-    console.log(dailyLog)
-    console.log(employees)
 
     return (
         <div>

@@ -6,6 +6,7 @@ import Register from './Register';
 import LogsContainer from './LogsContainer';
 import DetailedLog from './DetailedLog'
 import Employees from "./Employees";
+import EmployeesLog from "./EmployeesLog";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           });
       }, []);
 
+      console.log(employees)
   return (
     <Router>
       <div className="App">
@@ -44,6 +46,7 @@ function App() {
           <Employees
             employees={employees} />} 
             />
+        <Route exact path={`/employees/:employeeId`} element={<EmployeesLog />} />
       </Routes>
     </div>
     </Router>
