@@ -7,10 +7,11 @@ function Logs({dailyLog}){
     const logDate = new Date(created_on).toDateString()
 
     const full_name = dailyLog.employee.first_name + ' ' + dailyLog.employee.last_name
+    const employee = dailyLog.employee
 
     return (
         <div>
-            <p><strong>Daily log from: </strong><Link to={`/logs/${dailyLog.id}`}>{logDate}</Link>. <strong>Created by:</strong> {full_name}.</p>
+            <p><strong>Daily log from: </strong><Link to={`/logs/${dailyLog.id}`}>{logDate}</Link>. <strong>Created by:</strong> <Link to={`/employees/${employee.id}`}>{full_name}</Link>.</p>
         </div>
     )
 }

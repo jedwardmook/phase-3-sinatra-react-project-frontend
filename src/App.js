@@ -7,7 +7,7 @@ import LogsContainer from './LogsContainer';
 import DetailedLog from './DetailedLog'
 import Employees from "./Employees";
 import EmployeesLog from "./EmployeesLog";
-
+import './App.css';
 
 function App() {
   const [dailyLogs, setDailyLogs] = useState([])
@@ -29,7 +29,6 @@ function App() {
           });
       }, []);
 
-      console.log(employees)
   return (
     <Router>
       <div className="App">
@@ -46,7 +45,10 @@ function App() {
           <Employees
             employees={employees} />} 
             />
-        <Route exact path={`/employees/:employeeId`} element={<EmployeesLog />} />
+        <Route exact path={`/employees/:employeeId`} element={
+          <EmployeesLog 
+            employees={employees} />}
+            />
       </Routes>
     </div>
     </Router>

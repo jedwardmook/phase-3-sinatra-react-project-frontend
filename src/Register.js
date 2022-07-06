@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register(){
     const [registerEmployee, setRegisterEmployee] = useState({
@@ -16,6 +16,8 @@ function Register(){
         })
     }
 
+    let navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         fetch("http://localhost:9292/employees", {
@@ -30,7 +32,10 @@ function Register(){
             }),
         })
         .then((r) => r.json())
-        .then(response => console.log(response))
+        .then(response => {
+            console.log(response)
+            navigate("/")
+        })
     };
 
 

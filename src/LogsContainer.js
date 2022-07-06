@@ -12,7 +12,8 @@ function LogsContainer({dailyLogs}){
             })
 
     return (
-        <div className="log">
+        <div className="log-container">
+            <button>Create New</button>
             {dailyLogsToDisplay}
         </div>
     )
