@@ -15,6 +15,14 @@ function DetailedLog(){
           });
       }, []);
 
+    function handleDeleteClick() {
+        fetch(`http://localhost:9292/daily_notes/${displayLog}}`, {
+          method: "DELETE",
+        })
+          .then((r) => r.json())
+          .then((response) => console.log(response," Deleted"));
+      }
+
 
     return (
       detailedLog?
@@ -30,6 +38,7 @@ function DetailedLog(){
           <p>{detailedLog.items_86ed}</p>
           <h4>Anything else:</h4>
           <p>{detailedLog.miscellaneous}</p>
+          <button onClick={handleDeleteClick}>Delete Log</button>
         </div> : <h1>Loading</h1>
     )
 }
