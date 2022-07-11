@@ -7,6 +7,7 @@ import LogsContainer from './LogsContainer';
 import DetailedLog from './DetailedLog'
 import Employees from "./Employees";
 import EmployeesLog from "./EmployeesLog";
+import CreateLog from "./CreateLog";
 import './App.css';
 
 function App() {
@@ -34,8 +35,14 @@ function App() {
       <div className="App">
       <Header />
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={
+          <Login 
+            employees={employees}/>} 
+            />
         <Route path='/register' element={<Register />} />
+        <Route path='/create_log' element={<CreateLog 
+            employees={employees}/>} 
+            />
         <Route path='/logs' element={
           <LogsContainer 
             dailyLogs = {dailyLogs} />} 
