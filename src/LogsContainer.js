@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logs from "./Logs";
 
 function LogsContainer({dailyLogs}){
@@ -13,7 +14,7 @@ function LogsContainer({dailyLogs}){
 
     return (
         <div className="log-container">
-            <button>Create New</button>
+            <Link to="/create_log"><button>Create New</button></Link>
             {dailyLogsToDisplay}
         </div>
     )

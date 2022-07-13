@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom"
 
 
 function CreateLog({employees}){
@@ -12,6 +13,8 @@ function CreateLog({employees}){
         miscellaneous: "",
         created_on: new Date()
     })
+
+    let navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -34,7 +37,9 @@ function CreateLog({employees}){
         .then((r) => r.json())
         .then(response => {
             console.log(response)
+            navigate("/logs")
         })
+
     };
 
     const handleChange = (e) => {

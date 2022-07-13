@@ -35,10 +35,10 @@ function App() {
       <div className="App">
       <Header />
       <Routes>
-        <Route path='/' element={
+        {/* <Route path='/' element={
           <Login 
             employees={employees}/>} 
-            />
+            /> */}
         <Route path='/register' element={<Register />} />
         <Route path='/create_log' element={<CreateLog 
             employees={employees}/>} 

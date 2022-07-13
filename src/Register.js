@@ -6,8 +6,8 @@ function Register(){
     const [registerEmployee, setRegisterEmployee] = useState({
         first_name: "",
         last_name: "",
-        email_address: ""}
-        )
+        email_address: ""
+    })
 
     const handleChange = (e) => {
         setRegisterEmployee({
@@ -34,7 +34,7 @@ function Register(){
         .then((r) => r.json())
         .then(response => {
             console.log(response)
-            navigate("/")
+            navigate("/logs")
         })
     };
 
