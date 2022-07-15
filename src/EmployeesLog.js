@@ -4,11 +4,6 @@ import { useParams, Link } from "react-router-dom";
 function EmployeesLog(){
     const [employee, setEmployee] = useState([])
     const [dailyNotes, setDailyNotes] = useState([])
-    const [editedEmployee, setEditedEmployee] = useState({
-        first_name: employee.first_name,
-        last_name: employee.last_name,
-        email_address: employee.email_address
-    })
     const [isActive, setIsActive] = useState(false)
 
     let employeeId = useParams()
@@ -39,9 +34,9 @@ function EmployeesLog(){
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            first_name: editedEmployee.first_name,
-            last_name: editedEmployee.last_name,
-            email_address: editedEmployee.email_address
+            first_name: employee.first_name,
+            last_name: employee.last_name,
+            email_address: employee.email_address
           }),
         })
           .then((r) => r.json())
@@ -56,8 +51,8 @@ function EmployeesLog(){
     }
 
     const handleChange = (e) => {
-        setEditedEmployee({
-            ...editedEmployee,
+        setEmployee({
+            ...employee,
             [e.target.name] : e.target.value
         })
     }
@@ -74,14 +69,14 @@ function EmployeesLog(){
             <input
               type="text"
               name="first_name"
-              value={editedEmployee.first_name}
+              value={employee.first_name}
               onChange={handleChange}
               /><br />
             Edit last name:
             <input
               type="text"
               name="last_name"
-              value={editedEmployee.last_name}
+              value={employee.last_name}
               onChange={handleChange}
               />
             </form>
@@ -91,7 +86,7 @@ function EmployeesLog(){
             <input
               type="text"
               name="email_address"
-              value={editedEmployee.email_address}
+              value={employee.email_address}
               onChange={handleChange}
               /><br />
           </form>

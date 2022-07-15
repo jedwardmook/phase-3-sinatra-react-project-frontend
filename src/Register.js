@@ -34,7 +34,7 @@ function Register(){
         .then((r) => r.json())
         .then(response => {
             console.log(response)
-            navigate("/logs")
+            navigate("/home")
         })
     };
 

@@ -1,7 +1,6 @@
 import { useEffect,useState } from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from './Header';
-import Login from './Login';
 import Register from './Register';
 import LogsContainer from './LogsContainer';
 import DetailedLog from './DetailedLog'
@@ -35,17 +34,14 @@ function App() {
       <div className="App">
       <Header />
       <Routes>
-        {/* <Route path='/' element={
-          <Login 
-            employees={employees}/>} 
-            /> */}
         <Route path='/register' element={<Register />} />
         <Route path='/create_log' element={<CreateLog 
             employees={employees}/>} 
             />
-        <Route path='/logs' element={
+        <Route path='/home' element={
           <LogsContainer 
-            dailyLogs = {dailyLogs} />} 
+            dailyLogs = {dailyLogs}
+            employees = {employees} />} 
             />
         <Route exact path={`/logs/:logId`} element={<DetailedLog />} />
         <Route exact path='/employees' element={

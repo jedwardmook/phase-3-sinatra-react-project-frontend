@@ -1,4 +1,8 @@
-
+.header-image {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
 .employee-table {
   border: 1px solid;
 }

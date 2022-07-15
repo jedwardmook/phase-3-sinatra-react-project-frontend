@@ -1,10 +1,12 @@
 import React from "react";
+import header from './images/4lw_notes.png'
+
 
 function Header(){
 
     return (
         <div>
-            <h1>4LW Daily Notes</h1>
+            <img className="header-image" src={header} alt="4LW Notes" />
         </div>
     )
 

@@ -3,14 +3,6 @@ import { useParams } from "react-router-dom";
 
 function DetailedLog(){
   const [detailedLog, setDetailedLog] = useState()
-  const [editedLog, setEditedLog] = useState({
-      coffee_notes: "",
-      needs: "",
-      items_86ed: "",
-      pastry_soldout: false,
-      leftover_pastry: "",
-      miscellaneous: "",
-  })
   const [isActive, setIsActive] = useState(false)
 
   let logId = useParams()
@@ -42,12 +34,12 @@ function DetailedLog(){
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        coffee_notes: editedLog.coffee_notes,
-        needs: editedLog.needs,
-        items_86ed: editedLog.items_86ed,
-        pastry_soldout: editedLog.pastry_soldout,
-        leftover_pastry: editedLog.leftover_pastry,
-        miscellaneous: editedLog.miscellaneous, 
+        coffee_notes: detailedLog.coffee_notes,
+        needs: detailedLog.needs,
+        items_86ed: detailedLog.items_86ed,
+        pastry_soldout: detailedLog.pastry_soldout,
+        leftover_pastry: detailedLog.leftover_pastry,
+        miscellaneous: detailedLog.miscellaneous, 
       }),
     })
       .then((r) => r.json())
@@ -63,21 +55,21 @@ function DetailedLog(){
   }
 
   const handleChange = (e) => {
-    setEditedLog({
-        ...editedLog,
+    setDetailedLog({
+        ...detailedLog,
         [e.target.name] : e.target.value
     })
   }
 
   const handleRadio = (e) => {
     if (e.target.value === "true"){
-        setEditedLog({
-            ...editedLog,
+        setDetailedLog({
+            ...detailedLog,
             [e.target.name]: true
         })
     } else
-        setEditedLog({
-            ...editedLog,
+        setDetailedLog({
+            ...detailedLog,
             [e.target.name]: false
     })
 }
@@ -95,7 +87,7 @@ function DetailedLog(){
             <input
               type="text"
               name="coffee_notes"
-              value={editedLog.coffee_notes}
+              value={detailedLog.coffee_notes}
               onChange={handleChange}
               /><br />
           </form>
@@ -108,21 +100,21 @@ function DetailedLog(){
               type="radio"
               name="pastry_soldout"
               value={true}
-              checked={editedLog.pastry_soldout === true}
+              checked={detailedLog.pastry_soldout === true}
               onChange={handleRadio}
               />True
             <input
               type="radio"
               name="pastry_soldout"
               value={false}
-              checked={editedLog.pastry_soldout === false}
+              checked={detailedLog.pastry_soldout === false}
               onChange={handleRadio}
               />False<br />
             Pastry leftover:
             <input
               type="text"
               name="leftover_pastry"
-              value={editedLog.leftover_pastry}
+              value={detailedLog.leftover_pastry}
               onChange={handleChange}
               /><br />
           </form>
@@ -133,7 +125,7 @@ function DetailedLog(){
             <input
               type="text"
               name="needs"
-              value={editedLog.needs}
+              value={detailedLog.needs}
               onChange={handleChange}
               /><br />
           </form>
@@ -144,7 +136,7 @@ function DetailedLog(){
             <input
               type="text"
               name="items_86ed"
-              value={editedLog.items_86ed}
+              value={detailedLog.items_86ed}
               onChange={handleChange}
               /><br />
           </form>
@@ -155,7 +147,7 @@ function DetailedLog(){
             <input
               type="text"
               name="miscellaneous"
-              value={editedLog.miscellaneous}
+              value={detailedLog.miscellaneous}
               onChange={handleChange}
               /><br />
           </form>
