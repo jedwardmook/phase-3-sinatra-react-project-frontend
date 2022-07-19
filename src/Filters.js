@@ -8,20 +8,21 @@ function Filters({employees, filteredSelectedEmployee, filteredEmployee, filtere
 
     return (
         <div className="filters">
-            <span>Filter logs by Employee:</span>
+            <hr className="top_line"/>
+            <span className="employee_span">Filter logs by Employee:</span>
                 <select
                     name="employee-filter"
-                    className="employee-filter"
+                    className="employee_filter"
                     onChange={filteredSelectedEmployee}
                     value={filteredEmployee}
                 >
                     <option value="All">All</option>
                     {employeesToBeFiltered}
                 </select>
-            <span>Filter logs by Month:</span>
+            <span className="month_span">Filter logs by Month:</span>
                 <select
                     name="month-filter"
-                    className="month-filter"
+                    className="month_filter"
                     onChange={filteredSelectedMonth}
                     value={filteredMonth}
                 >
@@ -39,6 +40,7 @@ function Filters({employees, filteredSelectedEmployee, filteredEmployee, filtere
                     <option value="10">November</option>
                     <option value="11">December</option>
                 </select>
+            <hr />
         </div>
     )
 

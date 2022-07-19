@@ -1,5 +1,6 @@
 import React from "react";
-import header from './images/4lw_notes.png'
+import header from './images/4lw_notes.jpg'
+
 
 
 function Header(){

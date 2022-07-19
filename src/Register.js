@@ -41,35 +41,43 @@ function Register(){
 
 
     return (
-        <div>
+        <div className="register">
+            <hr className="top_line"/>
+            <h1 className="create_header">Register Employee</h1>
             <form id="register-form" onSubmit={handleSubmit}>
-            <input
-                id="register-first-name"
-                type="text" 
-                name="first_name"
-                value={registerEmployee.first_name}
-                placeholder="First Name"
-                onChange={handleChange}
+                <label for="first_name" className="register_label">First Name:</label>
+                <input
+                    id="register-first-name"
+                    type="text" 
+                    name="first_name"
+                    className="register_input_first"
+                    value={registerEmployee.first_name}
+                    placeholder="First Name"
+                    onChange={handleChange}
             /><br />
-            <input
-                id="register-last-name"
-                type="text" 
-                name="last_name"
-                value={registerEmployee.last_name}
-                placeholder="Last Name"
-                onChange={handleChange}
+                <label for="last_name" className="register_label">Last Name:</label>
+                <input
+                    id="register-last-name"
+                    type="text" 
+                    name="last_name"
+                    className="register_input_last"
+                    value={registerEmployee.last_name}
+                    placeholder="Last Name"
+                    onChange={handleChange}
             /><br />
-            <input 
-                id="register-email"
-                type="text" 
-                name="email_address" 
-                value={registerEmployee.email_address}
-                placeholder="Email Address"
-                onChange={handleChange}
+                <label for="last_name" className="register_label">Email Address:</label>
+                <input 
+                    id="register-email"
+                    type="text" 
+                    name="email_address" 
+                    className="register_input_email"
+                    value={registerEmployee.email_address}
+                    placeholder="Email Address"
+                    onChange={handleChange}
             /><br />
-            <button>Register</button>
+            <br />
+            <button className="submit">Submit</button>
             </form>
-            <h5>Back to <Link to={'/'}>login</Link></h5>
         </div>
     )
 }

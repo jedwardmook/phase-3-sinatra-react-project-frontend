@@ -8,6 +8,8 @@ import Employees from "./Employees";
 import EmployeesLog from "./EmployeesLog";
 import CreateLog from "./CreateLog";
 import './App.css';
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 function App() {
   const [dailyLogs, setDailyLogs] = useState([])
@@ -33,8 +35,9 @@ function App() {
     <Router>
       <div className="App">
       <Header />
+      <NavBar />
       <Routes>
-        <Route path='/register' element={<Register />} />
+        <Route path='/create_employee' element={<Register />} />
         <Route path='/create_log' element={<CreateLog 
             employees={employees}/>} 
             />
@@ -54,6 +57,7 @@ function App() {
             />
       </Routes>
     </div>
+    <Footer />
     </Router>
   );
 }

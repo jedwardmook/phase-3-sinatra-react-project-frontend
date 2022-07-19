@@ -73,25 +73,28 @@ function CreateLog({employees}){
     })
 
     return (
-        <div>
-            <h3>Create your log</h3>
+        <div className="create_log">
+            <hr className="top_line"/>
+            <h1 className="create_header">Create your log</h1>
             <form onSubmit={handleSubmit}>
-                <h4>Employee</h4>
-                    <select name="employee_id" onChange={handleChange}>
+                <h3 className="log_head">Employee</h3>
+                    <select className="employee_select" name="employee_id" onChange={handleChange}>
                         <option value="choose" >Choose employee</option>
                         {employeeName}
                         </select>
-                <h4>Coffee Notes:</h4>
+                <h3 className="log_head">Coffee Notes:</h3>
                 <input
                     type="type"
                     name="coffee_notes"
+                    className="register_input"
                     value={newLog.coffee_notes}
                     onChange={handleChange} 
                     />
-                <h4>Pastry Soldout:</h4>
+                <h3 className="log_head">Pastry Soldout:</h3>
                 <input
                     type="radio"
                     name="pastry_soldout"
+                    className="radio_input"
                     checked={newLog.pastry_soldout === true}
                     value={"true"}
                     onChange={handleRadio}
@@ -100,40 +103,45 @@ function CreateLog({employees}){
                 <input
                     type="radio"
                     name="pastry_soldout"
+                    className="radio_input"
                     checked={newLog.pastry_soldout === false}
                     value={"false"}
                     onChange={handleRadio} 
                     />
                 False
-                <h5>Pastry Leftover:</h5>
+                <h5 className="log_head_small">Pastry Leftover:</h5>
                 <input
                     type="type"
                     name="leftover_pastry"
+                    className="create_input"
                     value={newLog.leftover_pastry} 
                     onChange={handleChange}
                     />
-                <h4>Shop needs:</h4>
+                <h3 className="log_head">Shop needs:</h3>
                 <input
                     type="text"
                     name="needs"
+                    className="create_input"
                     value={newLog.needs}
                     onChange={handleChange} 
                     />
-                <h5>Inventory needed:</h5>
+                <h5 className="log_head_small">Inventory needed:</h5>
                 <input
                     type="text"
                     name="items_86ed"
+                    className="create_input"
                     value={newLog.items_86ed}
                     onChange={handleChange}
                     />
-                <h4>Miscellaneous</h4>
+                <h3 className="log_head">Miscellaneous</h3>
                 <textarea
                     type="text"
                     name="miscellaneous"
+                    className="create_input"
                     value={newLog.miscellaneous} 
                     onChange={handleChange}
                     /><br></br>
-                <button className="log-submit">Submit</button>
+                <button className="submit">Submit</button>
             </form>
         </div>
     )

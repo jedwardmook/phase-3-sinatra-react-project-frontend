@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 import Logs from "./Logs";
 import Filters from "./Filters";
+import right_arrow from './images/right_arrow.png'
+import left_arrow from './images/left_arrow.png'
 
 function LogsContainer({dailyLogs, employees}){
     const [filteredEmployee, setFilteredEmployee] = useState("All")
@@ -53,7 +54,6 @@ function LogsContainer({dailyLogs, employees}){
 
     return (
         <div className="log-container">
-            <Link to="/create_log"><button>Create New</button></Link>
             <Filters 
                 employees = {employees}
                 filteredSelectedEmployee = {filteredSelectedEmployee}
@@ -62,9 +62,11 @@ function LogsContainer({dailyLogs, employees}){
                 filteredMonth = {filteredMonth}
                 />
             {dailyLogsToDisplay.length > 0 ? dailyLogsToDisplay : <p>No logs to display</p>}
-            <p>Showing {startingNumber} to {(startingNumber + displayNumber)}</p>
-            <button onClick={decreaseStartingNumber}>⬅️</button>
-            <button onClick={increaseStartingNumber}>➡️</button>
+            <p className="display-counter">Showing {startingNumber} to {(startingNumber + displayNumber)}</p>
+            <div className="display-buttons">
+                <img className="decrease" onClick={decreaseStartingNumber} src={left_arrow}/>
+                <img className="increase" onClick={increaseStartingNumber} src={right_arrow}/>
+            </div>
         </div>
     )
 }

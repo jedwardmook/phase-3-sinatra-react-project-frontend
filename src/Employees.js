@@ -5,33 +5,31 @@ function Employees({employees}){
 
     const employeeRow = employees.map((employee) => {
         return (
-            <div>
                 <tr key={employee.id}>
-                    <td><Link to={`/employees/${employee.id}`}>📝 </Link></td>
-                    <td>{employee.first_name}</td>
-                    <td>{employee.last_name}</td>
-                    <td>{employee.email_address}</td>
+                    <td className="item">{employee.first_name}</td>
+                    <td className="item_spacing">{employee.last_name}</td>
+                    <td className="item_spacing">{employee.email_address}</td>
+                    <td className="item_center"><Link to={`/employees/${employee.id}`}>📝 </Link></td>
                 </tr>
-            </div>
         )
     })
 
-    return <div>
-        <table className="employee-table">
-            <thead>
+    return (
+        <div className="employee_div">
+            <hr className="top_line"/>
+            <table className="employee_table">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Address</th>
+                    <td className="category">First Name</td>
+                    <td className="category">Last Name</td>
+                    <td className="category">Email Address</td>
+                    <td className="category">Logs</td>
                 </tr>
-            </thead>
-            <tbody>
                 {employeeRow}
-            </tbody>
-
-        </table>
+                
+            </table>
 
     </div>
+    )
 }
 
 export default Employees
