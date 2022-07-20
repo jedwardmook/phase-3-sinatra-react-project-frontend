@@ -13,6 +13,7 @@ function CreateLog({employees}){
         miscellaneous: "",
         created_on: new Date()
     })
+    const [soldout, setSoldout] = useState(false)
 
     let navigate = useNavigate()
 
@@ -55,17 +56,26 @@ function CreateLog({employees}){
         })
     }
 
+    const handleSoldout = () => {
+        if (soldout === false){
+        setSoldout(true)
+    } else {
+        setSoldout(false)
+    }}
+
     const handleRadio = (e) => {
         if (e.target.value === "true"){
             setNewLog({
                 ...newLog,
                 [e.target.name]: true
             })
+            handleSoldout()
         } else
             setNewLog({
                 ...newLog,
                 [e.target.name]: false
         })
+            handleSoldout()
     }
     
     const employeeName = employees.map ((employee) => {
@@ -77,7 +87,7 @@ function CreateLog({employees}){
             <hr className="top_line"/>
             <h1 className="create_header">Create your log</h1>
             <form onSubmit={handleSubmit}>
-                <h3 className="log_head">Employee</h3>
+                <h3 className="log_head">Employee:</h3>
                     <select className="employee_select" name="employee_id" onChange={handleChange}>
                         <option value="choose" >Choose employee</option>
                         {employeeName}
@@ -86,7 +96,7 @@ function CreateLog({employees}){
                 <input
                     type="type"
                     name="coffee_notes"
-                    className="register_input"
+                    className="create_input"
                     value={newLog.coffee_notes}
                     onChange={handleChange} 
                     />
@@ -109,11 +119,11 @@ function CreateLog({employees}){
                     onChange={handleRadio} 
                     />
                 False
-                <h5 className="log_head_small">Pastry Leftover:</h5>
+                <h5 className={soldout? "toggle-edit" : "log_head_small"}>Pastry Leftover:</h5>
                 <input
                     type="type"
                     name="leftover_pastry"
-                    className="create_input"
+                    className={soldout? "toggle-edit" : "create_input"}
                     value={newLog.leftover_pastry} 
                     onChange={handleChange}
                     />

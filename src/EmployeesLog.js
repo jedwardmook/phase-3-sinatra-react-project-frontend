@@ -38,12 +38,13 @@ function EmployeesLog(){
             last_name: employee.last_name,
             email_address: employee.email_address
           }),
-        })
+          })
           .then((r) => r.json())
           .then((response) => {
             console.log(response)
             setEmployee(response)
           });
+          setIsActive(!isActive)
       }
     
     const handleToggle = () => {
@@ -61,43 +62,52 @@ function EmployeesLog(){
 
     return (
         employee ?
-        <div>
-            <div className="employee-info"></div>
-            <h1>{employee.first_name} {employee.last_name}</h1>
+        <div className="employee_info">
+          <hr className="top_line"/>
+          <h1 className="employee_header">{employee.first_name} {employee.last_name}</h1>
             <form className={isActive ? "toggle-form" : "toggle-edit"}>
-            Edit first name:
-            <input
-              type="text"
-              name="first_name"
-              value={employee.first_name}
-              onChange={handleChange}
-              /><br />
-            Edit last name:
-            <input
-              type="text"
-              name="last_name"
-              value={employee.last_name}
-              onChange={handleChange}
-              />
+              <div className="edit_div">
+                <label for="first_name" className="register_label">Edit first name:</label>
+                <input
+                type="text"
+                name="first_name"
+                className="edit_first"
+                value={employee.first_name}
+                onChange={handleChange}
+                /><br />
+                <label for="first_name" className="register_label">Edit last name:</label>
+                <input
+                type="text"
+                name="last_name"
+                className="edit_last"
+                value={employee.last_name}
+                onChange={handleChange}
+                />
+              </div>
             </form>
-            <h2>{employee.email_address}</h2>
+          <h3 className="email_head">Email address: {employee.email_address}</h3>
             <form className={isActive ? "toggle-form" : "toggle-edit"}>
-            Edit email:
-            <input
+              <div className="edit_div">
+              <label for="first_name" className="register_label">Edit email:</label>
+              <input
               type="text"
               name="email_address"
+              className="edit_email"
               value={employee.email_address}
               onChange={handleChange}
               /><br />
-          </form>
-             {dailyNotes.map((note) => {
-                return <p>Notes from: <Link to={`/logs/${note.id}`}>{new Date(note.created_on).toDateString()}</Link></p>
-            })}
-            <form className="form"></form>
-            <button onClick={handleToggle}>📝 Edit {employee.first_name} {employee.last_name}</button>
-            <button onClick={handleDeleteClick}>❌ Delete {employee.first_name} {employee.last_name}</button><br />
-            <button className={isActive ? "toggle-form" : "toggle-edit"} onClick={handleSubmit}>Submit</button>
-
+              </div>
+            </form>
+          <hr />
+          <h4 className="employee_log_head">{employee.first_name} {employee.last_name}'s Logs:</h4>
+          <hr className="employee_logs"/>
+           {dailyNotes.map((note) => {
+              return <p className="logs"><strong>Daily Log from: </strong><Link to={`/logs/${note.id}`}>{new Date(note.created_on).toDateString()}</Link></p>
+          })}
+          <br/>
+          <button className="employee_button" onClick={handleToggle}>📝 Edit {employee.first_name} {employee.last_name}</button>
+          <button className="employee_button" onClick={handleDeleteClick}>❌ Delete {employee.first_name} {employee.last_name}</button><br />
+          <button className={isActive ? "submit" : "toggle-edit"} onClick={handleSubmit}>Submit</button>
         </div> : <h1>Employee Loading...</h1>
     )
 }

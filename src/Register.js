@@ -44,6 +44,7 @@ function Register(){
         <div className="register">
             <hr className="top_line"/>
             <h1 className="create_header">Register Employee</h1>
+            <br />
             <form id="register-form" onSubmit={handleSubmit}>
                 <label for="first_name" className="register_label">First Name:</label>
                 <input

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function DetailedLog(){
   const [detailedLog, setDetailedLog] = useState()
@@ -77,25 +77,31 @@ function DetailedLog(){
 
     return (
       detailedLog?
-        <div>
-          <h1>Notes from: {new Date(detailedLog.created_on).toDateString()}</h1>
-          <h3>Created by: {detailedLog.employee.first_name} {detailedLog.employee.last_name}</h3>
-          <h4>Coffee notes:</h4>
-          <p>{detailedLog.coffee_notes}</p>
+        <div className={isActive ? "employee_info_long": "employee_info"}>
+          <hr className="top_line"></hr>
+          <h1 className="employee_header">Notes from: {new Date(detailedLog.created_on).toDateString()}</h1>
+          <h4 className="email_head">Created by: <Link to={`/employees/${detailedLog.employee.id}`}>{detailedLog.employee.first_name} {detailedLog.employee.last_name}</Link></h4>
+          <br />
+          <h3 className="log_head">Coffee notes:</h3>
+          <p className="detailed_logs">{detailedLog.coffee_notes}</p>
           <form className={isActive ? "toggle-form" : "toggle-edit"}>
-            Edit coffee notes:
+          <div className="edit_div">
+            <label for="coffee_notes" className="register_label">Edit coffee notes:</label>
             <input
               type="text"
               name="coffee_notes"
+              className="edit_detailed_log"
               value={detailedLog.coffee_notes}
               onChange={handleChange}
               /><br />
+          </div>
           </form>
-          <h4>Pastry notes:</h4>
-          {detailedLog.pastry_soldout? <p>✅ Soldout</p>:<p>Leftover: {detailedLog.leftover_pastry}</p>}
+          <h3 className="log_head">Pastry notes:</h3>
+          {detailedLog.pastry_soldout? <p className="detailed_logs">✅ Soldout</p>:<p className="detailed_logs">Leftover: {detailedLog.leftover_pastry}</p>}
           <form className={isActive ? "toggle-form" : "toggle-edit"}>
-            <p>Edit pastry notes:</p>
-            Pastry soldout:
+          <div className="edit_div">
+            <p className="register_label">Edit pastry notes:</p>
+            <label for="pastry_soldout" className="register_label">Pastry soldout:</label>
             <input
               type="radio"
               name="pastry_soldout"
@@ -110,50 +116,63 @@ function DetailedLog(){
               checked={detailedLog.pastry_soldout === false}
               onChange={handleRadio}
               />False<br />
-            Pastry leftover:
+            <label for="leftover_pastry" className="register_label">Pastry leftover: </label>
             <input
               type="text"
               name="leftover_pastry"
+              className="edit_detailed_log"
               value={detailedLog.leftover_pastry}
               onChange={handleChange}
               /><br />
+          </div>
           </form>
-          <h4>Needs for the shop:</h4>
-          <p>{detailedLog.needs}</p>
+          <h3 className="log_head">Needs for the shop:</h3>
+          <p className="detailed_logs">{detailedLog.needs}</p>
           <form className={isActive ? "toggle-form" : "toggle-edit"}>
-          Edit needs:
+          <div className="edit_div">
+          <label for="needs" className="register_label">Edit needs for the shop:</label>
             <input
               type="text"
               name="needs"
+              className="edit_detailed_log"
               value={detailedLog.needs}
               onChange={handleChange}
               /><br />
+          </div>
           </form>
-          <h5>86ed items:</h5>
-          <p>{detailedLog.items_86ed}</p>
+          <h4 className="log_head">86ed items:</h4>
+          <p className="detailed_logs">{detailedLog.items_86ed}</p>
           <form className={isActive ? "toggle-form" : "toggle-edit"}>
-           Edit 86ed items:
+          <div className="edit_div">
+          <label for="items_86ed" className="register_label">Edit 86ed items:</label>
             <input
               type="text"
               name="items_86ed"
+              className="edit_detailed_log"
               value={detailedLog.items_86ed}
               onChange={handleChange}
               /><br />
+          </div>
           </form>
-          <h4>Anything else:</h4>
-          <p>{detailedLog.miscellaneous}</p>
+          <h3 className="log_head">Anything else:</h3>
+          <p className="detailed_logs">{detailedLog.miscellaneous}</p>
           <form className={isActive ? "toggle-form" : "toggle-edit"}>
-            Edit anything else:
+          <div className="edit_div">
+          <label for="miscellaneous" className="register_label">Edit anything else:</label>
             <input
               type="text"
               name="miscellaneous"
+              className="edit_detailed_log"
               value={detailedLog.miscellaneous}
               onChange={handleChange}
               /><br />
+          </div>
+          <br />
           </form>
-          <button onClick={handleToggle}>📝Edit Log</button>
-          <button onClick={handleDeleteClick}>❌Delete Log</button><br  />
-          <button className={isActive ? "toggle-form" : "toggle-edit"} onClick={handleSubmit}>Submit</button>
+          <button className="employee_button" onClick={handleToggle}>📝Edit Log</button>
+          <button className="employee_button" onClick={handleDeleteClick}>❌Delete Log</button><br  />
+          <br/>
+          <button className={isActive ? "submit" : "toggle-edit"} onClick={handleSubmit}>Submit</button>
         </div> : <h1>Loading</h1>
     )
 }

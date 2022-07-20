@@ -9,7 +9,7 @@ function Footer(){
         <div>
             <img className="footer-image" src={footer} alt="4LW footer" />
             <div className="footer">
-                <p>John Mook 2022</p>
+                <p className="signature">John Mook 2022</p>
             </div>
         </div>
     )
