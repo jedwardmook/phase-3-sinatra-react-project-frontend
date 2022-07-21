@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Register(){
+function Register({getEmployees}){
     const [registerEmployee, setRegisterEmployee] = useState({
         first_name: "",
         last_name: "",
@@ -16,29 +16,28 @@ function Register(){
         })
     }
 
-    let navigate = useNavigate()
+let navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        fetch("http://localhost:9292/employees", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                first_name: registerEmployee.first_name,
-                last_name: registerEmployee.last_name,
-                email_address: registerEmployee.email_address
-            }),
+const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch("http://localhost:9292/employees", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            first_name: registerEmployee.first_name,
+            last_name: registerEmployee.last_name,
+            email_address: registerEmployee.email_address
+        }),
         })
         .then((r) => r.json())
         .then(response => {
             console.log(response)
-            navigate("/home")
+            getEmployees()    
         })
+        navigate("/employees")
     };
-
-
 
     return (
         <div className="register">
@@ -46,7 +45,7 @@ function Register(){
             <h1 className="create_header">Register Employee</h1>
             <br />
             <form id="register-form" onSubmit={handleSubmit}>
-                <label for="first_name" className="register_label">First Name:</label>
+                <label className="register_label">First Name:</label>
                 <input
                     id="register-first-name"
                     type="text" 
@@ -56,7 +55,7 @@ function Register(){
                     placeholder="First Name"
                     onChange={handleChange}
             /><br />
-                <label for="last_name" className="register_label">Last Name:</label>
+                <label className="register_label">Last Name:</label>
                 <input
                     id="register-last-name"
                     type="text" 
@@ -66,7 +65,7 @@ function Register(){
                     placeholder="Last Name"
                     onChange={handleChange}
             /><br />
-                <label for="last_name" className="register_label">Email Address:</label>
+                <label className="register_label">Email Address:</label>
                 <input 
                     id="register-email"
                     type="text" 

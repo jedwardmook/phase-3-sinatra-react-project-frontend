@@ -8,6 +8,7 @@ function LogsContainer({dailyLogs, employees}){
     const [filteredEmployee, setFilteredEmployee] = useState("All")
     const [filteredMonth, setFilteredMonth] = useState("All")
     const [startingNumber, setStartingNumber] = useState(0)
+    
 
     const filteredSelectedEmployee = (e) => {
         setFilteredEmployee(e.target.value)
@@ -35,7 +36,7 @@ function LogsContainer({dailyLogs, employees}){
             })
         }}
 
-    const displayNumber = 10
+    const displayNumber = 9
 
     const increaseStartingNumber = () => {
         setStartingNumber(startingNumber + displayNumber)
@@ -45,13 +46,14 @@ function LogsContainer({dailyLogs, employees}){
         setStartingNumber(startingNumber - displayNumber)
     }
 
+
     const dailyLogsToDisplay = logsFilteredByMonth().slice(startingNumber, startingNumber + displayNumber).map((dailyLog) => {
             return <Logs
                     dailyLog ={dailyLog}
                     key={dailyLog.id}
                     />
             })
-
+           
     return (
         <div className="log-container">
             <Filters 
@@ -64,8 +66,8 @@ function LogsContainer({dailyLogs, employees}){
             {dailyLogsToDisplay.length > 0 ? dailyLogsToDisplay : <p>No logs to display</p>}
             <p className="display-counter">Showing {startingNumber} to {(startingNumber + displayNumber)}</p>
             <div className="display-buttons">
-                <img className="decrease" onClick={decreaseStartingNumber} src={left_arrow}/>
-                <img className="increase" onClick={increaseStartingNumber} src={right_arrow}/>
+                <img className={startingNumber === 0 ? "toggle-edit" : "decrease"} onClick={decreaseStartingNumber} src={left_arrow}/>
+                <img className={(startingNumber + displayNumber) > dailyLogsToDisplay? "toggle-edit" : "increase"} onClick={increaseStartingNumber} src={right_arrow}/>
             </div>
         </div>
     )

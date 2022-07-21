@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;800&display=swap');
 
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 #root {
   background-color: black;
@@ -283,7 +288,7 @@
   margin-right: auto;
   margin-left: auto;
   width: 599px;
-  height: 660px;
+  height: 600px;
   text-align: left;
 }
 

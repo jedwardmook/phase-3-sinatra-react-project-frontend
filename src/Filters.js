@@ -3,7 +3,7 @@ import React from "react";
 function Filters({employees, filteredSelectedEmployee, filteredEmployee, filteredSelectedMonth, filteredMonth}){
 
     const employeesToBeFiltered = employees.map ((employee) => {
-        return <option value={employee.id}>{employee.first_name} {employee.last_name}</option>
+        return <option key={employee.id} value={employee.id}>{employee.first_name} {employee.last_name}</option>
     })
 
     return (

@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
-function DetailedLog(){
+function DetailedLog({getDailyLogs}){
   const [detailedLog, setDetailedLog] = useState()
   const [isActive, setIsActive] = useState(false)
 
   let logId = useParams()
   const displayLog = logId.logId
+  let navigate = useNavigate()
 
 
 
@@ -23,7 +24,11 @@ function DetailedLog(){
         method: "DELETE",
       })
         .then((r) => r.json())
-        .then((response) => console.log(response," Deleted"));
+        .then((response) => {
+          console.log("Deleted", response)
+          getDailyLogs()
+          navigate("/home")
+        });
   }
 
   function handleSubmit(e) {

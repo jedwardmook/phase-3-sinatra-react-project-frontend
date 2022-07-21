@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
-function EmployeesLog(){
+function DetailedEmployee({getEmployees}){
     const [employee, setEmployee] = useState([])
     const [dailyNotes, setDailyNotes] = useState([])
     const [isActive, setIsActive] = useState(false)
 
     let employeeId = useParams()
     const displayEmployee = employeeId.employeeId
+    let navigate = useNavigate()
 
     useEffect(() => {
         fetch(`http://localhost:9292/employees/${displayEmployee}`)
@@ -23,7 +24,11 @@ function EmployeesLog(){
           method: "DELETE",
         })
           .then((r) => r.json())
-          .then((response) => console.log(response," Deleted"));
+          .then((response) => {
+            console.log("Deleted", response)
+            getEmployees()
+          })
+          navigate("/employees")
       }
 
     function handleSubmit(e) {
@@ -41,7 +46,7 @@ function EmployeesLog(){
           })
           .then((r) => r.json())
           .then((response) => {
-            console.log(response)
+  
             setEmployee(response)
           });
           setIsActive(!isActive)
@@ -58,7 +63,6 @@ function EmployeesLog(){
         })
     }
 
-    
 
     return (
         employee ?
@@ -67,7 +71,7 @@ function EmployeesLog(){
           <h1 className="employee_header">{employee.first_name} {employee.last_name}</h1>
             <form className={isActive ? "toggle-form" : "toggle-edit"}>
               <div className="edit_div">
-                <label for="first_name" className="register_label">Edit first name:</label>
+                <label className="register_label">Edit first name:</label>
                 <input
                 type="text"
                 name="first_name"
@@ -75,7 +79,7 @@ function EmployeesLog(){
                 value={employee.first_name}
                 onChange={handleChange}
                 /><br />
-                <label for="first_name" className="register_label">Edit last name:</label>
+                <label className="register_label">Edit last name:</label>
                 <input
                 type="text"
                 name="last_name"
@@ -88,7 +92,7 @@ function EmployeesLog(){
           <h3 className="email_head">Email address: {employee.email_address}</h3>
             <form className={isActive ? "toggle-form" : "toggle-edit"}>
               <div className="edit_div">
-              <label for="first_name" className="register_label">Edit email:</label>
+              <label className="register_label">Edit email:</label>
               <input
               type="text"
               name="email_address"
@@ -102,7 +106,7 @@ function EmployeesLog(){
           <h4 className="employee_log_head">{employee.first_name} {employee.last_name}'s Logs:</h4>
           <hr className="employee_logs"/>
            {dailyNotes.map((note) => {
-              return <p className="logs"><strong>Daily Log from: </strong><Link to={`/logs/${note.id}`}>{new Date(note.created_on).toDateString()}</Link></p>
+              return <p key={note.id} className="logs"><strong>Daily Log from: </strong><Link to={`/logs/${note.id}`}>{new Date(note.created_on).toDateString()}</Link></p>
           })}
           <br/>
           <button className="employee_button" onClick={handleToggle}>📝 Edit {employee.first_name} {employee.last_name}</button>
@@ -112,4 +116,4 @@ function EmployeesLog(){
     )
 }
 
-export default EmployeesLog
+export default DetailedEmployee

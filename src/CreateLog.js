@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom"
 
 
-function CreateLog({employees}){
+function CreateLog({employees, getDailyLogs}){
     const [newLog, setNewLog] = useState({
         employee_id: null,
         coffee_notes: "",
@@ -38,6 +38,7 @@ function CreateLog({employees}){
         .then((r) => r.json())
         .then(response => {
             console.log(response)
+            getDailyLogs()
             navigate("/home")
         })
 
