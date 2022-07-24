@@ -69,7 +69,8 @@ function App() {
         <Route exact path={`/employees/:employeeId`} element={
           <DetailedEmployee 
             employees={employees} 
-            getEmployees= {getEmployees} />}
+            getEmployees= {getEmployees}
+            getDailyLogs = {getDailyLogs} />}
             />
       </Routes>
     </div>

@@ -50,6 +50,7 @@ function DetailedLog({getDailyLogs}){
       .then((r) => r.json())
       .then((response) => {
         console.log(response)
+        getDailyLogs()
       });
       handleToggle()
       setDetailedLog(detailedLog)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
-function DetailedEmployee({getEmployees}){
+function DetailedEmployee({getEmployees,getDailyLogs}){
     const [employee, setEmployee] = useState([])
     const [dailyNotes, setDailyNotes] = useState([])
     const [isActive, setIsActive] = useState(false)
@@ -27,6 +27,7 @@ function DetailedEmployee({getEmployees}){
           .then((response) => {
             console.log("Deleted", response)
             getEmployees()
+            getDailyLogs()
           })
           navigate("/employees")
       }
@@ -46,8 +47,9 @@ function DetailedEmployee({getEmployees}){
           })
           .then((r) => r.json())
           .then((response) => {
-  
-            setEmployee(response)
+          setEmployee(response)
+          getEmployees()
+
           });
           setIsActive(!isActive)
       }
