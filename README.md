@@ -1,70 +1,28 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](src/images/4lw_notes.jpg)
 
-## Available Scripts
+### **Project Goal:** 
+An application where employees could create and log notes of day to day activities at a coffee shop.  
 
-In the project directory, you can run:
+**Features:**
 
-### `npm start`
+Allows a use to create a new log using the form as well as creating a new employee . The log is submitted with the date created. The logs are displayed most recent to oldest on the home page. An employee or user can filter logs by month or employee. Each log has its dedicated page as does an employee which displays their own logs. Users can update or delete a log or employee info from this dedicated page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Walkthrough:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The home screen displays all the submitted logs by date and who they were created by. It features two filters for users to narrow down the logs, filter by month and filter by employee. The navbar features "Create Log" for creating a new log, an "Employees" tab for seeing <ins>all</ins> the employees's info, and a "Register" tab that allows the user to create a new employee.
 
-### `npm test`
+<img src="./src/images/home.gif" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Each created log or employee has their own window. This specific window allows all the infomation to be patched or updated as needed. The user also has the ability to delete the specific log or employee. Deleting an employee will also delete the logs that employee has created.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="./src/images/edit.gif" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Technologies Used:
+* React
+* Ruby
+* Active Record
+* Sinatra
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![](src/images/boat_footer.png)
